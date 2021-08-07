@@ -50,19 +50,19 @@ function Navbar() {
       <React.Fragment>
         <Drawer anchor="left" open={open} onClose={toggleDrawer(false)}>
           <List className={classes.list}>
-            <MenuItem text="Início">
+            <MenuItem text="Início" link="/">
               <HomeIcon />
             </MenuItem>
             <Divider />
-            <MenuItem text="Perfil">
+            <MenuItem text="Perfil" link="/profile">
               <PersonIcon />
             </MenuItem>
             <Divider />
-            <MenuItem text="Receitas">
+            <MenuItem text="Receitas" link="/recipes">
               <RecipeIcon />
             </MenuItem>
             <Divider />
-            <MenuItem text="Produtos">
+            <MenuItem text="Produtos" link="/products">
               <KitchenIcon />
             </MenuItem>
           </List>

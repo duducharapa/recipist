@@ -4,6 +4,7 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  makeStyles,
   Typography
 } from '@material-ui/core';
 import image from "../assets/petit-gateau.jpg";
@@ -14,12 +15,13 @@ interface RecipeCardProps {
 }
 
 function RecipeCard(props: RecipeCardProps) {
+  
   return (
     <Card>
       <CardMedia
         component="img"
         image={image}
-        title="Contemplative Reptile"
+        title={props.title}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">

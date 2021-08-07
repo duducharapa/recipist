@@ -1,10 +1,10 @@
 import {
   Container,
   Grid,
-  Theme,
   Typography
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
+import Recipe from '../models/Recipe';
 
 import RecipeCard from './RecipeCard';
 
@@ -14,24 +14,27 @@ const styles = makeStyles({
   }
 });
 
-function RecipeList() {
+interface RecipeListProps {
+  data: Recipe[],
+  title: string
+}
+
+function RecipeList(props: RecipeListProps) {
   const classes = styles();
   
   return (
     <Container className={classes.container}>
       <Typography variant="h5" color="primary" gutterBottom>
-        Opa, você pode fazer:
+        {props.title}
       </Typography>
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={6} md={4}>
-          <RecipeCard title="Teste 1" description="Teste da descrição" />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <RecipeCard title="Teste 2" description="Esse já tem outra" />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <RecipeCard title="Teste 3" />
-        </Grid>
+        {
+          props.data.map((recipe: Recipe, index: number) => (
+            <Grid item xs={12} sm={6} md={3} key={index}>
+              <RecipeCard title={recipe.name} description={recipe.description} />
+            </Grid>
+          ))
+        }
       </Grid>
     </Container>
   );

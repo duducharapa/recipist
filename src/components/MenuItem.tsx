@@ -1,18 +1,20 @@
 import { ReactElement } from 'react';
-import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { ListItem, ListItemIcon } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 interface MenuItemProps {
   children: ReactElement
   text: string
+  link: string
 }
 
 function MenuItem(props: MenuItemProps) {
   return (
-    <ListItem button onClick={() => alert('Not implemented yet')}>
+    <ListItem>
       <ListItemIcon>
         {props.children}
       </ListItemIcon>
-      <ListItemText primary={props.text} />
+      <Link to={props.link}>{props.text}</Link>
     </ListItem>
   );
 }
