@@ -1,6 +1,6 @@
-import { ReactElement } from 'react';
-import { ListItem, ListItemIcon } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { ReactElement } from "react";
+import { ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 interface MenuItemProps {
   children: ReactElement
@@ -8,13 +8,13 @@ interface MenuItemProps {
   link: string
 }
 
-function MenuItem(props: MenuItemProps) {
+function MenuItem({ children, text, link }: MenuItemProps) {
   return (
-    <ListItem>
+    <ListItem component={Link} to={link}>
       <ListItemIcon>
-        {props.children}
+        {children}
       </ListItemIcon>
-      <Link to={props.link}>{props.text}</Link>
+      <ListItemText primary={text} />
     </ListItem>
   );
 }

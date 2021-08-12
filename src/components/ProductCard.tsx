@@ -4,28 +4,41 @@ import {
   CardContent,
   Button,
   Typography
-} from '@material-ui/core';
+} from "@material-ui/core";
+import { Link } from "react-router-dom";
+
+import Product from "../models/Product";
 
 interface ProductCardProps {
-  title: string
-  quantity: number
-  type: string
+  data: Product
 }
 
-function ProductCard(props: ProductCardProps) {
+function ProductCard({ data }: ProductCardProps) {
+  const { id, name, quantity, type }: Product = data;
+  
   return (
     <Card>
       <CardContent>
         <Typography variant="h5" component="h2">
-          {props.title}
+          {name}
         </Typography>
         <Typography color="textSecondary" gutterBottom>
-          {props.type}
+          {type}
+        </Typography>
+        <Typography color="primary">
+          Você possui:
+          <Typography color="textPrimary">
+            {quantity}
+          </Typography>
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary">Ver</Button>
-        <Button size="small" color="primary" variant="contained">Receitas relacionadas</Button>
+        <Button component={Link} to={`/products/${id}`} size="small" color="primary">
+          Ver
+        </Button>
+        <Button size="small" color="primary" variant="contained" component={Link} to={`/products/related/${id}`}>
+          Receitas relacionadas
+        </Button>
       </CardActions>
     </Card>
   );

@@ -1,9 +1,10 @@
-import RecipeList from "../components/RecipeList";
+import List from "../components/List";
+import RecipeCard from "../components/RecipeCard";
 import recipes from "../data/Recipes";
 
 function Main() {
   return (
-    <RecipeList title="Você pode fazer:" data={recipes} />
+    <List title="Você pode fazer:" data={recipes} component={RecipeCard} />
   );
 }
 

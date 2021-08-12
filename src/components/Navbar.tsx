@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import {
   AppBar,
   Divider,
@@ -7,15 +7,14 @@ import {
   List,
   Toolbar,
   Typography
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core';
-import HomeIcon from '@material-ui/icons/Home';
-import KitchenIcon from '@material-ui/icons/Kitchen';
-import MenuIcon from '@material-ui/icons/Menu';
-import PersonIcon from '@material-ui/icons/Person';
-import RecipeIcon from '@material-ui/icons/Fastfood';
-
-import MenuItem from './MenuItem';
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
+import HomeIcon from "@material-ui/icons/Home";
+import KitchenIcon from "@material-ui/icons/Kitchen";
+import MenuIcon from "@material-ui/icons/Menu";
+import PersonIcon from "@material-ui/icons/Person";
+import RecipeIcon from "@material-ui/icons/Fastfood";
+import MenuItem from "./MenuItem";
 
 const styles = makeStyles({
   list: {
@@ -25,10 +24,10 @@ const styles = makeStyles({
 
 function Navbar() {
   const classes = styles();
-  const [open, openAndClose] = React.useState(false);
+  const [open, openAndClose] = useState(false);
   
   const toggleDrawer = (open: boolean) => (event: any) => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+    if (event.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
       return;
     }
 
@@ -36,7 +35,7 @@ function Navbar() {
   };
 
   return (
-    <React.Fragment>
+    <>
       <AppBar position="static" color="primary">
         <Toolbar>
           <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer(true)}>
@@ -47,7 +46,7 @@ function Navbar() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <React.Fragment>
+      <>
         <Drawer anchor="left" open={open} onClose={toggleDrawer(false)}>
           <List className={classes.list}>
             <MenuItem text="Início" link="/">
@@ -67,8 +66,8 @@ function Navbar() {
             </MenuItem>
           </List>
         </Drawer>
-      </React.Fragment>
-    </React.Fragment>
+      </>
+    </>
   );
 }
 

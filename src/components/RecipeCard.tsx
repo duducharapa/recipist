@@ -4,38 +4,35 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-  makeStyles,
   Typography
 } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import Recipe from '../models/Recipe';
 import image from "../assets/petit-gateau.jpg";
 
 interface RecipeCardProps {
-  title: string,
-  description?: string
+  data: Recipe
 }
 
-function RecipeCard(props: RecipeCardProps) {
+function RecipeCard({ data }: RecipeCardProps) {
+  const { id, description, name }: Recipe = data;
   
   return (
     <Card>
-      <CardMedia
-        component="img"
-        image={image}
-        title={props.title}
-      />
+      <CardMedia component="img" image={image} title={name} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
-          {props.title}
+          {name}
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
-          {props.description || ""}
+          {description}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary" onClick={() => alert('Not implemented yet')}>
+        <Button size="small" color="primary" component={Link} to={`/recipes/${id}`}>
           Ver
         </Button>
-        <Button size="small" color="primary" variant="contained" onClick={() => alert('Not implemented yet')}>
+        <Button size="small" color="primary" variant="contained" component={Link} to={`/recipes/make/${id}`}>
           Fazer receita
         </Button>
       </CardActions>
